@@ -35,4 +35,26 @@ module.exports = {
     }),
     new CleanWebpackPlugin(),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+    ],
+  },
+  resolve: {
+    alias: {
+      '@models': path.resolve(__dirname, 'src/models'),
+      'App': path.resolve(__dirname, 'src'),
+    },
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
+  devServer: {
+    port: 50000,
+  },
 };
